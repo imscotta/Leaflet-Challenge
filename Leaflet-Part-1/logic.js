@@ -52,9 +52,10 @@ d3.json(queryUrl).then(function (data) {
         // *  Your data markers should reflect the magnitude of the earthquake by their size and the depth of the earthquake by color. 
         // Earthquakes with higher magnitudes should appear larger, and 
         // earthquakes with greater depth should appear darker in color.
+        // console.log(data.features[i].geometry.coordinates[1]);
 
         L.circle([data.features[i].geometry.coordinates[0], data.features[i].geometry.coordinates[1]], {
-            fillOpacity: 0.75,
+          fillOpacity: 0.75,
             color: "#ffffff",
             fillColor: color,
             // Setting our circle's radius to equal the output of our markerSize() function:
