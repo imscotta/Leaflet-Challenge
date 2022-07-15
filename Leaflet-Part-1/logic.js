@@ -32,30 +32,26 @@ d3.json(queryUrl).then(function (data) {
         var color = "";
         if (magnitude > 5) {
             color = "#4B0082";
-        }
-        if (magnitude > 4) {
+        } else if (magnitude > 4) {
             color = "#663399";
-        }
-        if (magnitude > 3) {
+        } else if (magnitude > 3) {
             color = "#7B68EE";
-        }
-        if (magnitude > 2) {
+        } else if (magnitude > 2) {
             color = "#BA55D3";
-        }
-        if (magnitude > 1) {
+        } else if (magnitude > 1) {
             color = "#DA70D6";
-        }
-        if (magnitude > 0) {
+        } else if (magnitude > 0) {
             color = "#DDA0DD";
         }
 
         // *  Your data markers should reflect the magnitude of the earthquake by their size and the depth of the earthquake by color. 
         // Earthquakes with higher magnitudes should appear larger, and 
         // earthquakes with greater depth should appear darker in color.
-        // console.log(data.features[i].geometry.coordinates[1]);
+        var coordinates= [data.features[i].geometry.coordinates[0], data.features[i].geometry.coordinates[1]];
+        console.log(coordinates);
 
-        L.circle([data.features[i].geometry.coordinates[0], data.features[i].geometry.coordinates[1]], {
-          fillOpacity: 0.75,
+        L.circle(coordinates, {
+          fillOpacity: 1,
             color: "#ffffff",
             fillColor: color,
             // Setting our circle's radius to equal the output of our markerSize() function:
@@ -68,8 +64,10 @@ d3.json(queryUrl).then(function (data) {
   var legend = L.control({ position: "bottomright" });
   legend.onAdd = function() {
     var div = L.DomUtil.create("div", "info legend");
-    var limits = [5, 4, 3, 2, 1];
-    var colors = ["#4B0082", "#663399", "#7B68EE", "#BA55D3", "#DA70D6", "#DDA0DD"];
+    var limits = [0, 1, 2, 3, 4, 5, "5+"];
+    // var colors = ["#4B0082", "#663399", "#7B68EE", "#BA55D3", "#DDA0DD"];
+    var colors = ["#DDA0DD", "#DA70D6", "#BA55D3", "#7B68EE", "#663399", "#4B0082"];
+
     var labels = [];
 
     // Add the minimum and maximum.
