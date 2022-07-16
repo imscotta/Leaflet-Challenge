@@ -28,7 +28,7 @@ d3.json(queryUrl).then(function (data) {
         console.log(data.features[i]);
 
         var magnitude = data.features[i].properties.mag;
-        var radiusWidth = magnitude * 30000;
+        var radiusWidth = magnitude * 10000;
         var color = "";
         if (magnitude > 5) {
             color = "#4B0082";
@@ -47,7 +47,7 @@ d3.json(queryUrl).then(function (data) {
         // *  Your data markers should reflect the magnitude of the earthquake by their size and the depth of the earthquake by color. 
         // Earthquakes with higher magnitudes should appear larger, and 
         // earthquakes with greater depth should appear darker in color.
-        var coordinates= L.latLng(data.features[i].geometry.coordinates[0], data.features[i].geometry.coordinates[1]);
+        var coordinates= L.latLng(data.features[i].geometry.coordinates[1], data.features[i].geometry.coordinates[0]);
         console.log(coordinates);
 
         L.circle(coordinates, {
